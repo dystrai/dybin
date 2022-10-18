@@ -1,0 +1,13 @@
+#!/bin/bash
+
+cat << FIM
+
+Para finalizar a gravação do terminal, pressione as teclas CTRL+D ou 
+execute o comando "exit" (Sem as aspas).
+
+FIM
+
+read -p "Título: " titulo
+asciinema rec -i 2.5 -t "${titulo}"
+
+
