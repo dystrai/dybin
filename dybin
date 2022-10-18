@@ -1,0 +1,7 @@
+#!/bin/bash
+
+echo "Atualizando os scripts de Jurandy..."
+
+cd /usr/local/bin
+git fetch
+git merge
