@@ -1,12 +1,26 @@
 #!/bin/bash
 
+if [[ "$0" != "-zsh" ]]; then
+    echo "Erro: o script deve ser no shell atual."
+    echo "Por gentileza, execute (Tem um espaço depois do \".\"):"
+    echo ". dybin"
+    exit 1
+fi
+
 echo "Atualizando os scripts de Jurandy..."
 
 if [ "$UID" -ne 0 ]; then
     echo "ERRO: O script \"${0}\" deve ser executado pelo usuário \"root\" ou via comando \"sudo\"."
+    echo "Pressione <ENTER> para continuar."
     exit 1
 fi
 
+# Muda de diretório
 cd /usr/local/bin
 git fetch
 git merge
+
+chmod +x [a-z]*
+
+# Retorna para o diretório anterior (Antes de executar o último comando "cd")
+cd -

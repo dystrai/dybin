@@ -1,4 +1,4 @@
-#!/usr/bin/zsh
+#!/usr/bin/zsh -xv
 
 # Variáveis globais
 
@@ -41,7 +41,7 @@ Por gentileza, informe o número de seu sobrenome preferido: "
   if ! [ -v APELIDO ]; then
     print "Olá, ${NOME}! Como você gostaria de ser chamado?"
     read APELIDO
-    var_dysconta[APELIDO]="${APELIDO}"
+    var_dysconta['APELIDO']="${APELIDO}"
   fi
 
   var_dysconta[NOME]="${NOME}"
@@ -56,11 +56,11 @@ principal(){
   
   ! [ -v NOME ] || ! [ -v SOBRENOME ] && obtem_nome_sobrenome
   
-  var_desejadas=(ANIMAL
+  var_desejadas=(
     DISCIPLINA
     LAB
     PC
-  )  
+  )
 
   for v in "${var_desejadas[@]}"; do
     if ! [ -v "${v}" ]; then
@@ -69,6 +69,19 @@ principal(){
 
       var_dysconta[${v}]=${novo_valor}
     fi
+  done
+
+  # Reserva o animal para o usuário
+  
+  DISCIPLINA_DIR="/var/lib/dysconta/${DISCIPLINA}/animal"
+  mkdir -p "${DISCIPLINA_DIR}"
+  cd "${DISCIPLINA_DIR}"
+
+  touch "${ANIMAL}" 2> /dev/null
+  while [[ ! -O "${ANIMAL}" ]]; do
+    print -n "Por gentileza, defina um valor para ANIMAL: "
+    read ANIMAL
+    print "${USER}" 1> "${ANIMAL}" 2> /dev/null
   done
 
   touch "${AMBIENTE}"
