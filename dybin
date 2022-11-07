@@ -1,6 +1,6 @@
 #!/bin/bash
 
-if [[ "$0" != "-zsh" ]]; then
+if [[ "$0" -ne "-zsh" ]]; then
     echo "Erro: o script deve ser executado no shell atual."
     echo "Por gentileza, execute (Tem um espaço depois do \".\"):"
     echo ". dybin"
