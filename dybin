@@ -1,7 +1,7 @@
 #!/bin/bash
 
 if [[ "$0" != "-zsh" ]]; then
-    echo "Erro: o script deve ser no shell atual."
+    echo "Erro: o script deve ser executado no shell atual."
     echo "Por gentileza, execute (Tem um espaço depois do \".\"):"
     echo ". dybin"
     exit 1
