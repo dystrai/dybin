@@ -9,4 +9,8 @@ iface enp0s10 inet static
   netmask 255.255.0.0
 FIM
 
+ifdown enp0s10
+ifup enp0s10
+
+
 
