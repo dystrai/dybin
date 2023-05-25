@@ -1,6 +1,6 @@
 #!/bin/bash
 
-echo "Informe o número do PC, com 2 dígitos (Ex.: 09, 05, 10)
+echo "Informe o número do PC, com 2 dígitos (Ex.: 09, 05, 10)"
 read -p "Número de seu PC: " pc
 cat << FIM > /etc/network/interfaces.d/enp0s10
 allow-hotplug enp0s10
