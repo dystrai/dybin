@@ -1,0 +1,12 @@
+#!/bin/bash
+
+echo "Informe o número do PC, com 2 dígitos (Ex.: 09, 05, 10)
+read -p "Número de seu PC: " pc
+cat << FIM > /etc/network/interfaces.d/enp0s10
+allow-hotplug enp0s10
+iface enp0s10 inet static
+  address 10.209.101.${PC}
+  netmask 255.255.0.0
+FIM
+
+
