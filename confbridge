@@ -5,8 +5,7 @@ read -p "Número de seu PC: " pc
 cat << FIM > /etc/network/interfaces.d/enp0s10
 allow-hotplug enp0s10
 iface enp0s10 inet static
-  address 10.209.101.${PC}
-  netmask 255.255.0.0
+  address 10.209.101.${pc}/16
 FIM
 
 ifdown enp0s10
