@@ -1,20 +1,12 @@
 #!/bin/bash
 
-if [ "$0" != "-zsh" ]; then
-    echo "Erro: o script deve ser executado no shell atual."
-    echo "Por gentileza, execute:"
-    echo ". dybin"
-    echo "Observe que tem um espaço depois do ponto (\".\")."
-    exit 1
-fi
-
-echo "Atualizando os scripts de Jurandy..."
-
 if [ "$UID" -ne 0 ]; then
     echo "ERRO: O script \"${0}\" deve ser executado pelo usuário \"root\" ou via comando \"sudo\"."
     echo "Pressione <ENTER> para continuar."
     exit 1
 fi
+
+echo "Atualizando os scripts de Jurandy..."
 
 # Muda de diretório
 cd /usr/local/bin
