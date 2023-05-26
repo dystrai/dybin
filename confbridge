@@ -4,6 +4,8 @@ from subprocess import run
 
 LABS = ['1', '2', '3', '4', 'redes']
 CONF_FILE = '/etc/network/interfaces.d/enp0s10'
+IFACE_DOWN = '/usr/sbin/ifdown'
+IFACE_UP = '/usr/sbin/ifup'
 
 print("Informe o laboratório (Ex.: 1, 2, 3, 4 ou redes) e o número de seu PC (Ex.: 1, 2, ..., 40).")
 lab = input('Número ou nome do laboratório: ')
@@ -32,7 +34,5 @@ iface enp0s10 inet static
   address {end_ipv4}
 '''
     conf_file_enp0s10.write(conf)
-    run(['ifdown', 'enp0s10'])
-    run(['ifup', 'enp0s10'])
-
-
+    run([IFACE_DOWN, 'enp0s10'])
+    run([IFACE_UP, 'enp0s10'])
