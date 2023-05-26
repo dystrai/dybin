@@ -31,9 +31,8 @@ allow-hotplug enp0s10
 iface enp0s10 inet static
   address {end_ipv4}
 '''
-    print(conf)
-    #conf_file_enp0s10.write(conf)
-    print('ifdown enp0s10'.split())
-    print('ifup enp0s10'.split())
+    conf_file_enp0s10.write(conf)
+    run('ifdown enp0s10'.split())
+    run('ifup enp0s10'.split())
 
 
