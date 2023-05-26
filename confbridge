@@ -1,15 +1,39 @@
-#!/bin/bash
+#!/usr/bin/env python3
 
-echo "Informe o número do PC, com 2 dígitos (Ex.: 09, 05, 10)"
-read -p "Número de seu PC: " pc
-cat << FIM > /etc/network/interfaces.d/enp0s10
+from subprocess import run
+
+LABS = ['1', '2', '3', '4', 'redes']
+CONF_FILE = '/etc/network/interfaces.d/enp0s10'
+
+print("Informe o laboratório (Ex.: 1, 2, 3, 4 ou redes) e o número de seu PC (Ex.: 1, 2, ..., 40).")
+lab = input('Número ou nome do laboratório: ')
+while lab not in LABS:
+    print("Informe o laboratório (Ex.: 1, 2, 3, 4 ou redes) e o número de seu PC (Ex.: 1, 2, ..., 40).")
+    lab = input('Número ou nome do laboratório: ')
+
+pc = input("Número de seu PC: ")
+while not pc.isdigit() and int(pc)>0:
+    pc = input("Número de seu PC: ")
+    
+# Remove zeros à esquerda
+pc = str(int(pc))
+
+if lab=='redes':
+    rede_ipv4 = f'172.16.1.1'
+else:
+    rede_ipv4 = f'10.209.10{lab}.'
+
+end_ipv4 = f'{rede_ipv4}{pc.zfill(2)}/16'
+
+with open(file=CONF_FILE, mode='w', encoding='utf-8') as conf_file_enp0s10:
+    conf = f'''\
 allow-hotplug enp0s10
 iface enp0s10 inet static
-  address 10.209.101.${pc}/16
-FIM
-
-ifdown enp0s10
-ifup enp0s10
-
+  address {end_ipv4}
+'''
+    print(conf)
+    #conf_file_enp0s10.write(conf)
+    print('ifdown enp0s10'.split())
+    print('ifup enp0s10'.split())
 
 
