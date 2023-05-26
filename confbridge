@@ -19,7 +19,7 @@ while not pc.isdigit() and int(pc)>0:
 pc = str(int(pc))
 
 if lab=='redes':
-    rede_ipv4 = f'172.16.1.1'
+    rede_ipv4 = '172.16.1.1'
 else:
     rede_ipv4 = f'10.209.10{lab}.'
 
