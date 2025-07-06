@@ -10,6 +10,7 @@ Para finalizar a gravação do terminal:
 
 FIM
 
+printf '\e[8;25;100t'
 read -p "Título: " titulo
 asciinema rec -i 2.5 -t "${titulo}"
 
