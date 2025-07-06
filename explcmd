@@ -79,7 +79,7 @@ def main():
         slug = slugify(' '.join(sys.argv[1:]))
         args = [Argumento(arg, i) for i,arg in enumerate(sys.argv[1:], start=1)]
 
-        cam_arq_md = Path() / 'comandos' / f'{slug}.md'
+        cam_arq_md = Path.home() / 'cmd-rel' / 'comandos' / f'{slug}.md'
         cam_arq_saida = cam_arq_md.parent / 'saidas' / f'{slug}.txt'
 
         dir_name = cam_arq_saida.parent
